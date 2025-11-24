@@ -3,3 +3,12 @@ GET http://localhost:8080/
 
 ### GET request to root
 GET http://localhost:8080/api/v1/software-engineers
+
+### POST request to root
+POST http://localhost:8080/api/v1/software-engineers
+Content-Type: application/json
+
+{
+    "name": "John Doe",
+    "techStack": ["Java", "Spring Boot", "PostgreSQL"]
+}
