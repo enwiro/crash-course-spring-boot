@@ -6,15 +6,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("api/v1/software-engineers")
 public class SoftwareEngineerController {
+    
+    private final SoftwareEngineerService softwareEngineerService;
+
     @GetMapping
     public List<SoftwareEngineer> getAllSoftwareEngineers() {
-        return List.of(
-            new SoftwareEngineer(1, "John Doe", List.of("Java", "Spring Boot", "SQL")),
-            new SoftwareEngineer(2, "Jane Doe", List.of("JavaScript", "React", "Node.js"))
-        );
+        return softwareEngineerService.getAllSoftwareEngineers();
     }
 }
