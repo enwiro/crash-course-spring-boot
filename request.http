@@ -1,0 +1,5 @@
+### GET request to root
+GET http://localhost:8080/
+
+### GET request to root
+GET http://localhost:8080/api/v1/software-engineers
