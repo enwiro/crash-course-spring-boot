@@ -3,12 +3,14 @@ package com.enwiro.crashcourse;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 @RequiredArgsConstructor
@@ -17,10 +19,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class SoftwareEngineerController {
     
     private final SoftwareEngineerService softwareEngineerService;
+    private final SoftwareEngineerRepository softwareEngineerRepository;
 
     @GetMapping
     public List<SoftwareEngineer> getAllSoftwareEngineers() {
         return softwareEngineerService.getAllSoftwareEngineers();
+    }
+
+    @GetMapping("{id}")
+    public SoftwareEngineer getSoftwareEngineersBy(@PathVariable Integer id) {
+        return softwareEngineerRepository
+        .findById(id)
+        .orElseThrow(() -> new IllegalStateException());
     }
 
     @PostMapping
